@@ -18,8 +18,3 @@ if ($uri !== '/' && file_exists(__DIR__ . '/public' . $uri)) {
     return false;
 }
 require_once __DIR__ . '/public/index.php';
-
-function asset($path, $secure = null)
-{
-    return app('url')->asset("public/" . $path, $secure);
-}
