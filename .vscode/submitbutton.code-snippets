@@ -1,0 +1,15 @@
+{
+  "Createform": {
+    "prefix": "submitbutton",
+    "body": [
+      " ",
+      "       <div class=\"form-group\">    ",
+      "        {!! Form::submit('SAVE', [",
+      "            'class' => 'btn btn-primary'",
+      "        ]) !!}        ",
+      "         </div>",
+      "   "
+    ],
+    "description": "Createform"
+  }
+}

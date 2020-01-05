@@ -1,0 +1,25 @@
+{
+  "Createform": {
+    "prefix": "formcreate",
+    "body": [
+      " {!! Form::open(['method' => 'post', 'action' => 'PostsController@store', 'files' => true]) !!}",
+      "    {{-- <form method=\"post\" action=\"/posts\"> --}}",
+      "       {{csrf_field()}}",
+      "       <div class=\"form-group\">",
+      "           {!! Form::label('title', 'Post Title') !!}",
+      "          ",
+      "           {!! Form::text('title', null, [",
+      "               'class' => 'form-control'           ",
+      "           ]) !!}",
+      "            {!! Form::file('file', ['class' => 'form-control']) !!}",
+      "       </div>    ",
+      "       <div class=\"form-group\">    ",
+      "        {!! Form::submit('SAVE', [",
+      "            'class' => 'btn btn-primary'",
+      "        ]) !!}        ",
+      "         </div>",
+      "    {!! Form::close() !!}"
+    ],
+    "description": "Createform"
+  }
+}

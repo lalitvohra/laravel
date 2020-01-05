@@ -1,0 +1,18 @@
+{
+  "Createform": {
+    "prefix": "textfield",
+    "body": [
+      "      <div class=\"form-group\">",
+      "           {!! Form::label('title', 'Post Title') !!}",
+      "          ",
+      "           {!! Form::text('title', null, [",
+      "               'class' => 'form-control'           ",
+      "           ]) !!}",
+      "            ",
+      "       </div>    ",
+      "      ",
+      "   "
+    ],
+    "description": "Createform"
+  }
+}
