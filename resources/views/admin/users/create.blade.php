@@ -44,8 +44,8 @@
                           </div>    
                          
                      <div class="form-group">
-                        {!! Form::label('file', 'User Image') !!}
-                             {!! Form::file('file', ['class' => 'form-control']) !!}
+                        {!! Form::label('photo_id', 'User Image') !!}
+                             {!! Form::file('photo_id', ['class' => 'form-control']) !!}
                     </div> 
               
                   @include('includes.form_error')
