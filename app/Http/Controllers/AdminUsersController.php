@@ -8,6 +8,7 @@ use App\Photo;
 use Illuminate\Http\Request;
 use App\Http\Requests\UsersRequest;
 use App\Http\Requests\UsersEditRequest;
+use Illuminate\Support\Facades\Session;
 
 class AdminUsersController extends Controller
 {
@@ -15,7 +16,9 @@ class AdminUsersController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
      */
+
     public function index()
     {
         $users = User::all();
@@ -41,8 +44,16 @@ class AdminUsersController extends Controller
      */
     public function store(UsersRequest $request)
     {
-        //return $request->all();
-        $input = $request->all();
+
+        if (trim($request->password) == "") {
+            $input = $request->except('password');
+        } else {
+
+            $input = $request->all();
+            $input['password'] = bcrypt($request->password);
+        }
+
+
 
         if ($file = $request->file('photo_id')) {
 
@@ -94,7 +105,14 @@ class AdminUsersController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $input =  $request->all();
+
+        if (trim($request->password) == "") {
+            $input = $request->except('password');
+        } else {
+
+            $input = $request->all();
+            $input['password'] = bcrypt($request->password);
+        }
 
         if ($file = $request->file('photo_id')) {
             $name = time() . $file->getClientOriginalName();
@@ -120,6 +138,11 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        unlink(public_path() . '/images/' . $user->photo->file);
+        $user->delete();
+        Session::flash('deleted_user', 'the user has been deleted');
+
+        return redirect(route('users.index'));
     }
 }

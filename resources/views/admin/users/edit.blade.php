@@ -7,7 +7,7 @@
 </div>
 
 <div class="col-sm-3">
-<img src="{{$user->photo ? $user->photo->file : "http://placehold.it/400"}}" alt="" class="img-responsive img-rounded">
+<img src="{{$user->photo ? asset('images').'/'.$user->photo->file : "http://placehold.it/400"}}" alt="" class="img-responsive img-rounded">
 </div>
 <div class="col-sm-9">
     {!! Form::model($user, ['method' => 'PATCH', 'action' => ['AdminUsersController@update', $user->id], 'files' => true]) !!}
@@ -57,16 +57,29 @@
                              {!! Form::file('photo_id', ['class' => 'form-control']) !!}
                     </div> 
               
-                              
-                     
-                  
-           
-        <div class="form-group">    
-         {!! Form::submit('SAVE', [
-             'class' => 'btn btn-primary'
-         ]) !!}        
-          </div>
-     {!! Form::close() !!}
+                     <div class="col-sm-3">
+                        <div class="form-group">    
+                            {!! Form::submit('SAVE', [
+                                'class' => 'btn btn-primary'
+                            ]) !!}        
+                             </div>
+                     </div>
+                     {!! Form::close() !!}
+                     <div class="col-sm-3">
+                        {!! Form::model($user, ['method' => 'DELETE', 'action' => ['AdminUsersController@destroy', $user->id]]) !!}
+                        {{-- <form method="post" action="/posts"> --}}
+                           {{csrf_field()}}
+                        
+                           <div class="form-group">    
+                            {!! Form::submit('DELETE', [
+                                'class' => 'btn btn-danger'
+                            ]) !!}        
+                             </div>
+                        {!! Form::close() !!}
+                     </div>
+    
+
+    
 </div>
 
   

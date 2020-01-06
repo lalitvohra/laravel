@@ -8,10 +8,4 @@ class Photo extends Model
 {
 
     protected $fillable = ['file'];
-
-    public function getFileAttribute($value)
-    {
-
-        return asset('images') . '/' .  $value;
-    }
 }
