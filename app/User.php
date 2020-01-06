@@ -32,14 +32,8 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role');
     }
 
-    public function getIsActiveAttribute($attribute)
-    {
-        if ($attribute == 0) {
-            return "Inactive";
-        } else {
-            return "Active";
-        }
-    }
+
+
 
     public function setPasswordAttribute($value)
     {
